@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/app/lib/db"
 
-const prismaClient = new PrismaClient
+
 export async function POST(req:Request) {
     try{
         const {username, password} = await req.json()
-    await prismaClient.user.create({
+    await prisma.user.create({
         data:{
             username:username,
             password:password

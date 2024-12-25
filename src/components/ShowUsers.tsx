@@ -1,12 +1,13 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/app/lib/db"
+import { User } from "@prisma/client"
 
 export async function ShowUsers(){
-    const prismaClient = new PrismaClient
-    const data = await prismaClient.user.findMany()
+    // const prismaClient = new prisma
+    const data: User[] = await prisma.user.findMany()
 
     return (
         <div>
-            {data.map((item):any => (
+            {data.map((item) => (
                 <div className="text-white" key={item.id}>
                     <div className="flex gap-4">
                         {item.id}.
